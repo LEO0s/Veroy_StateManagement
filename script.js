@@ -11,6 +11,7 @@ const inputs = document.querySelectorAll('.form-control');
 inputs.forEach(input => {
     input.addEventListener('input', (e) => {
         appState[e.target.name] = e.target.value;
+        localStorage.setItem('enrollmentData', JSON.stringify(appState));
         if (e.target.value.trim() !== "") clearError(e.target);
     });
 });
@@ -18,9 +19,8 @@ inputs.forEach(input => {
 form.addEventListener('submit', (e) => {
     e.preventDefault();
     if (validateForm()) {
-        localStorage.setItem('enrollmentData', JSON.stringify(appState));
-        alert("Application Saved to Local Storage!");
-        console.log("Saved State:", appState);
+        alert("Application Submitted Successfully!");
+        console.log("Final State:", appState);
     }
 });
 

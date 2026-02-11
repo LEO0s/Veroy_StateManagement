@@ -57,9 +57,6 @@ h2 {
     color: var(--primary-blue);
     font-size: 1.3rem;
     margin-bottom: 35px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
 }
 
 .form-row {
@@ -82,7 +79,6 @@ label {
 
 .required {
     color: var(--error-color);
-    margin-left: 2px;
 }
 
 .form-control {
@@ -91,7 +87,6 @@ label {
     border-radius: 8px;
     font-size: 0.95rem;
     color: #444;
-    transition: border-color 0.2s, box-shadow 0.2s;
 }
 
 .form-control:focus {
@@ -120,7 +115,6 @@ label {
     cursor: pointer;
     font-size: 1rem;
     float: right;
-    margin-top: 20px;
 }
 
 @media (max-width: 992px) {
