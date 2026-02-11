@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
     <header class="header">
         <div class="header-content">
             <img src="University Seal White.png" alt="ADDU Seal" class="logo">
@@ -20,13 +19,12 @@
     </header>
 
     <main class="container">
-        <h2><span class="icon">👤</span> Personal Information</h2>
-        
+        <h2>Personal Information</h2>
         <form id="applicationForm">
             <div class="form-row">
                 <div class="form-group">
-                    <label for="studentType">Student Type <span class="required">*</span></label>
-                    <select name="studentType" id="studentType" class="form-control">
+                    <label>Student Type <span class="required">*</span></label>
+                    <select name="studentType" class="form-control">
                         <option value="">-- Select Student Type --</option>
                         <option value="New Student">New Student</option>
                         <option value="Transferee">Transferee</option>
@@ -34,31 +32,23 @@
                     <small class="error-msg"></small>
                 </div>
                 <div class="form-group">
-                    <label for="religion">Religion <span class="required">*</span></label>
-                    <select name="religion" id="religion" class="form-control">
+                    <label>Religion <span class="required">*</span></label>
+                    <select name="religion" class="form-control">
                         <option value="">-- Select Religion --</option>
                         <option value="Roman Catholic">Roman Catholic</option>
                         <option value="Christianity">Christianity</option>
                         <option value="Islam">Islam</option>
-                        <option value="Hinduism">Hinduism</option>
-                        <option value="Buddhism">Buddhism</option>
-                        <option value="Judaism">Judaism</option>
-                        <option value="Atheism">Atheism</option>
-                        <option value="Agnosticism">Agnosticism</option>
                         <option value="Other">Other</option>
                     </select>
                     <small class="error-msg"></small>
                 </div>
                 <div class="form-group">
-                    <label for="civilStatus">Civil Status <span class="required">*</span></label>
-                    <select name="civilStatus" id="civilStatus" class="form-control">
+                    <label>Civil Status <span class="required">*</span></label>
+                    <select name="civilStatus" class="form-control">
                         <option value="">-- Select Civil Status --</option>
                         <option value="Single">Single</option>
                         <option value="Married">Married</option>
                         <option value="Widowed">Widowed</option>
-                        <option value="Separated">Separated</option>
-                        <option value="Annulled">Annulled</option>
-                        <option value="Divorced">Divorced</option>
                     </select>
                     <small class="error-msg"></small>
                 </div>
@@ -66,42 +56,42 @@
 
             <div class="form-row">
                 <div class="form-group">
-                    <label for="firstName">First Name <span class="required">*</span></label>
-                    <input type="text" name="firstName" id="firstName" class="form-control">
+                    <label>First Name <span class="required">*</span></label>
+                    <input type="text" name="firstName" class="form-control">
                     <small class="error-msg"></small>
                 </div>
                 <div class="form-group">
-                    <label for="middleName">Middlename</label>
-                    <input type="text" name="middleName" id="middleName" class="form-control" placeholder="Leave blank if none">
+                    <label>Middlename</label>
+                    <input type="text" name="middleName" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label for="lastName">Last Name <span class="required">*</span></label>
-                    <input type="text" name="lastName" id="lastName" class="form-control">
-                    <small class="error-msg"></small>
-                </div>
-            </div>
-
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="suffix">Suffix</label>
-                    <input type="text" name="suffix" id="suffix" class="form-control" placeholder="Jr., Sr., I, II, etc. (Leave blank if none)">
-                </div>
-                <div class="form-group">
-                    <label for="contactNumber">Contact Number <span class="required">*</span></label>
-                    <input type="tel" name="contactNumber" id="contactNumber" class="form-control" placeholder="e.g. 09273992923">
-                    <small class="error-msg"></small>
-                </div>
-                <div class="form-group">
-                    <label for="birthDate">Birthdate <span class="required">*</span></label>
-                    <input type="date" name="birthDate" id="birthDate" class="form-control">
+                    <label>Last Name <span class="required">*</span></label>
+                    <input type="text" name="lastName" class="form-control">
                     <small class="error-msg"></small>
                 </div>
             </div>
 
             <div class="form-row">
                 <div class="form-group">
-                    <label for="sex">Sex <span class="required">*</span></label>
-                    <select name="sex" id="sex" class="form-control">
+                    <label>Suffix</label>
+                    <input type="text" name="suffix" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Contact Number <span class="required">*</span></label>
+                    <input type="tel" name="contactNumber" class="form-control">
+                    <small class="error-msg"></small>
+                </div>
+                <div class="form-group">
+                    <label>Birthdate <span class="required">*</span></label>
+                    <input type="date" name="birthDate" class="form-control">
+                    <small class="error-msg"></small>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Sex <span class="required">*</span></label>
+                    <select name="sex" class="form-control">
                         <option value="">-- Select Sex --</option>
                         <option value="Male">Male</option>
                         <option value="Female">Female</option>
@@ -109,31 +99,27 @@
                     <small class="error-msg"></small>
                 </div>
                 <div class="form-group">
-                    <label for="email">Email Address <span class="required">*</span></label>
-                    <input type="email" name="email" id="email" class="form-control">
+                    <label>Email Address <span class="required">*</span></label>
+                    <input type="email" name="email" class="form-control">
                     <small class="error-msg"></small>
                 </div>
                 <div class="form-group">
-                    <label for="nationality">Nationality <span class="required">*</span></label>
-                    <input type="text" name="nationality" id="nationality" class="form-control" list="nationalityList" placeholder="Type to search nationalities...">
-                    <datalist id="nationalityList">
+                    <label>Nationality <span class="required">*</span></label>
+                    <input type="text" name="nationality" class="form-control" list="natList">
+                    <datalist id="natList">
                         <option value="Filipino">
                         <option value="American">
                         <option value="Chinese">
                         <option value="Japanese">
                         <option value="Korean">
-                        <option value="Spanish">
                     </datalist>
                     <small class="error-msg"></small>
                 </div>
             </div>
 
-            <div class="form-actions">
-                <button type="submit" class="btn-submit">Submit Application</button>
-            </div>
+            <button type="submit" class="btn-submit">Submit Application</button>
         </form>
     </main>
-
     <script src="script.js"></script>
 </body>
 </html>

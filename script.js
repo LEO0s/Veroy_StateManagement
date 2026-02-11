@@ -1,16 +1,8 @@
 const appState = {
-    studentType: "",
-    religion: "",
-    civilStatus: "",
-    firstName: "",
-    middleName: "",
-    lastName: "",
-    suffix: "",
-    contactNumber: "",
-    birthDate: "",
-    sex: "",
-    email: "",
-    nationality: ""
+    studentType: "", religion: "", civilStatus: "",
+    firstName: "", middleName: "", lastName: "",
+    suffix: "", contactNumber: "", birthDate: "",
+    sex: "", email: "", nationality: ""
 };
 
 const form = document.getElementById('applicationForm');
@@ -18,76 +10,52 @@ const inputs = document.querySelectorAll('.form-control');
 
 inputs.forEach(input => {
     input.addEventListener('input', (e) => {
-        const fieldName = e.target.name;
-        const fieldValue = e.target.value;
-        appState[fieldName] = fieldValue;
-        if (fieldValue.trim() !== "") {
-            clearError(e.target);
-        }
+        appState[e.target.name] = e.target.value;
+        if (e.target.value.trim() !== "") clearError(e.target);
     });
 });
 
 form.addEventListener('submit', (e) => {
     e.preventDefault();
     if (validateForm()) {
-        saveToLocalStorage();
-        alert("Success: Form state has been saved to Local Storage.");
-        console.log("Current State:", appState);
+        localStorage.setItem('enrollmentData', JSON.stringify(appState));
+        alert("Application Saved to Local Storage!");
+        console.log("Saved State:", appState);
     }
 });
 
 function validateForm() {
     let isValid = true;
-    const requiredFields = [
-        'studentType', 'religion', 'civilStatus', 
-        'firstName', 'lastName', 'contactNumber', 
-        'birthDate', 'sex', 'email', 'nationality'
-    ];
-    requiredFields.forEach(field => {
-        const inputElement = document.querySelector(`[name="${field}"]`);
-        const value = appState[field];
-        if (!value || value.trim() === "") {
-            showError(inputElement, "This field is required.");
+    const required = ['studentType', 'religion', 'civilStatus', 'firstName', 'lastName', 'contactNumber', 'birthDate', 'sex', 'email', 'nationality'];
+    
+    required.forEach(field => {
+        const el = document.querySelector(`[name="${field}"]`);
+        if (!appState[field] || appState[field].trim() === "") {
+            showError(el, "Required");
             isValid = false;
-        } else {
-            clearError(inputElement);
         }
     });
     return isValid;
 }
 
-function showError(input, message) {
-    const formGroup = input.parentElement;
-    const errorDisplay = formGroup.querySelector('.error-msg');
+function showError(input, msg) {
     input.classList.add('error');
-    if (errorDisplay) {
-        errorDisplay.textContent = message;
-    }
+    input.nextElementSibling.textContent = msg;
 }
 
 function clearError(input) {
-    const formGroup = input.parentElement;
-    const errorDisplay = formGroup.querySelector('.error-msg');
     input.classList.remove('error');
-    if (errorDisplay) {
-        errorDisplay.textContent = "";
-    }
-}
-
-function saveToLocalStorage() {
-    localStorage.setItem('enrollmentData', JSON.stringify(appState));
+    input.nextElementSibling.textContent = "";
 }
 
 window.addEventListener('load', () => {
-    const savedData = localStorage.getItem('enrollmentData');
-    if (savedData) {
-        const parsedData = JSON.parse(savedData);
-        Object.assign(appState, parsedData);
-        for (const key in parsedData) {
-            const input = document.querySelector(`[name="${key}"]`);
-            if (input) {
-                input.value = parsedData[key];
-            }
-        }
+    const data = localStorage.getItem('enrollmentData');
+    if (data) {
+        const parsed = JSON.parse(data);
+        Object.assign(appState, parsed);
+        Object.keys(parsed).forEach(key => {
+            const el = document.querySelector(`[name="${key}"]`);
+            if (el) el.value = parsed[key];
+        });
     }
 });
