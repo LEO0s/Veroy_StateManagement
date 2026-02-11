@@ -10,17 +10,36 @@ const inputs = document.querySelectorAll('.form-control');
 
 inputs.forEach(input => {
     input.addEventListener('input', (e) => {
-        appState[e.target.name] = e.target.value;
+        const name = e.target.getAttribute('name');
+        appState[name] = e.target.value;
         localStorage.setItem('enrollmentData', JSON.stringify(appState));
-        if (e.target.value.trim() !== "") clearError(e.target);
+        
+        if (e.target.value.trim() !== "") {
+            e.target.classList.remove('error');
+            const errorMsg = e.target.nextElementSibling;
+            if (errorMsg) errorMsg.textContent = "";
+        }
     });
 });
+
+function loadSavedData() {
+    const data = localStorage.getItem('enrollmentData');
+    if (data) {
+        const parsed = JSON.parse(data);
+        Object.assign(appState, parsed);
+        Object.keys(parsed).forEach(key => {
+            const el = document.querySelector(`[name="${key}"]`);
+            if (el) el.value = parsed[key];
+        });
+    }
+}
+
+loadSavedData();
 
 form.addEventListener('submit', (e) => {
     e.preventDefault();
     if (validateForm()) {
         alert("Application Submitted Successfully!");
-        console.log("Final State:", appState);
     }
 });
 
@@ -31,31 +50,10 @@ function validateForm() {
     required.forEach(field => {
         const el = document.querySelector(`[name="${field}"]`);
         if (!appState[field] || appState[field].trim() === "") {
-            showError(el, "Required");
+            el.classList.add('error');
+            if (el.nextElementSibling) el.nextElementSibling.textContent = "Required";
             isValid = false;
         }
     });
     return isValid;
 }
-
-function showError(input, msg) {
-    input.classList.add('error');
-    input.nextElementSibling.textContent = msg;
-}
-
-function clearError(input) {
-    input.classList.remove('error');
-    input.nextElementSibling.textContent = "";
-}
-
-window.addEventListener('load', () => {
-    const data = localStorage.getItem('enrollmentData');
-    if (data) {
-        const parsed = JSON.parse(data);
-        Object.assign(appState, parsed);
-        Object.keys(parsed).forEach(key => {
-            const el = document.querySelector(`[name="${key}"]`);
-            if (el) el.value = parsed[key];
-        });
-    }
-});
